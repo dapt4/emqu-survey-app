@@ -1,0 +1,121 @@
+{% extends 'layout.html' %}
+{% block body %}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %} 
+        {% for message in messages %}
+          <div class="alert alert-secondary col-md-4 mt-5 mx-auto alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor%}
+      {% endif %}
+    {% endwith %}
+    <form action="/add" method="POST" class="col-md-4 mt-5 mx-auto">
+      <div class="my-3">
+        <h1 class="text-center">Encuesta</h1>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo del participante: </label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="age" class="form-label">Edad: </label>
+        <select
+          class="form-select"
+          id="age"
+          name="age"
+          />
+          <option value="18-25">18-25</option>
+          <option value="26-33">26-33</option>
+          <option value="34-40">34-40</option>
+          <option value="40+">40+</option>
+        </select>
+      </div>
+      <div class="mb-3 from-check">
+        <div>Sexo: </div>
+        <label for="sex" class="form-label">Masculino</label>
+        <input
+          type="radio"
+          class="form-check-input"
+          id="sex"
+          name="sex"
+          value="male"
+          checked
+        />
+        <label for="sex2" class="form-label">Femenino</label>
+        <input
+          type="radio"
+          class="form-check-input"
+          id="sex2"
+          name="sex"
+          value="female"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="favorite" class="form-label">Red social favorita: </label>
+        <select
+          class="form-select"
+          id="favorite"
+          name="favorite"
+          />
+          <option value="facebook">Facebook</option>
+          <option value="whatsapp">Whatsapp</option>
+          <option value="twitter">Twitter</option>
+          <option value="instagram">Instagram</option>
+          <option value="tiktok">Tiktok</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="facebook" class="form-label">Tiempo promedio al día en Facebook (horas): </label>
+        <input
+          type="number"
+          class="form-control"
+          id="facebook"
+          name="facebook"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="whatsapp" class="form-label">Tiempo promedio al día en Whatsapp (horas): </label>
+        <input
+          type="number"
+          class="form-control"
+          id="whatsapp"
+          name="whatsapp"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="twitter" class="form-label">Tiempo promedio al día en Twitter (horas): </label>
+        <input
+          type="number"
+          class="form-control"
+          id="twitter"
+          name="twitter"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="instagram" class="form-label">Tiempo promedio al día en Instagram (horas): </label>
+        <input
+          type="number"
+          class="form-control"
+          id="instagram"
+          name="instagram"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="tiktok" class="form-label">Tiempo promedio al día en Tiktok (horas): </label>
+        <input
+          type="number"
+          class="form-control"
+          id="tiktok"
+          name="tiktok"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary w-100 mb-5">Enviar</button>
+    </form>
+{% endblock %}

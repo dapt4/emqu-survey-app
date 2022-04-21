@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <div class="mt-5">
+      <h1 class="text-center">Datos</h1>
+    </div>
+    <div class="container">
+      <div class="row">
+        <ul class="list-group col-md-6" >
+          <li class="list-group-item"><i class="fas fa-user-astronaut"></i> Cantidad de encuestas respondidas: {{LENGTH}}</li>
+          <li class="list-group-item"><i class="fas fa-thumbs-up"></i> Tiempo promedio por red social: 
+            <ul class="list-group">
+              <li class="list-group-item"><i class="fab fa-facebook"></i> Facebook: {{AVG['facebook']}}</li>
+              <li class="list-group-item"><i class="fab fa-whatsapp"></i> Whatsapp: {{AVG['whatsapp']}}</li>
+              <li class="list-group-item"><i class="fab fa-twitter"></i> Twitter: {{AVG['twitter']}}</li>
+              <li class="list-group-item"><i class="fab fa-instagram"></i> Instagram: {{AVG['instagram']}}</li>
+              <li class="list-group-item"><i class="fab fa-tiktok"></i> Tiktok: {{AVG['tiktok']}}</li>
+            </ul>
+          </li>
+          <li class="list-group-item"><i class="fas fa-heart"></i> Red social favorita: {{FAVORITE[0][0]}}</li>
+          <li class="list-group-item"><i class="fas fa-skull"></i> Red social menos querida: {{UNLIKE[0][0]}}</li>
+          <li class="list-group-item"><i class="fas fa-chart-line"></i> Rango de edad que más use cada red social:  </li>
+        </ul>
+        <div class="col-md-6">
+          <div id="container" style="height: 300px"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          Highcharts.chart('container', {
+              chart: {
+                  type: 'column'
+              },
+              title: {
+                  text: 'Tiempo promedio por red social'
+              },
+              xAxis: {
+                  categories: ['Facebook', 'Whatsapp', 'Twitter', 'Instagram', 'Tiktok']
+              },
+              yAxis: {
+                  title: {
+                      text: 'horas de uso'
+                  }
+              },
+              series: [{
+                  name: 'Participantes',
+                      data: [
+                              {{AVG['facebook']}},
+                              {{AVG['whatsapp']}},
+                              {{AVG['twitter']}},
+                              {{AVG['instagram']}},
+                              {{AVG['tiktok']}}
+                            ]
+              }],
+          });
+      });
+    </script>
+{% endblock %}
