@@ -11,7 +11,7 @@ Para levantar el entorno virtual use
 
 ### librerias
 Para instalar las librerias utilice
-#### `pip install -r requeriments.txt`
+#### `pip install -r requirements.txt`
 
 ## la Base de datos
 ### instalación
